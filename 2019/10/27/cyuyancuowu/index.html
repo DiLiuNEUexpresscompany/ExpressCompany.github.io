@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-10-27</span>
-            <span class="time">22:52:10</span>
+            <span class="time">22:54:01</span>
           </span>
           
         </div>
@@ -116,19 +116,25 @@
         
         <!-- Post Main Content -->
         <div class="post-content">
-          <p>###1.忘记声明函数<br><code>#include&lt;stdio&gt;</code>下面加上<code>int main()</code>或者其他<br>###2.忽略变量类型，进行不合法运算</p>
+          <p>###1.忘记声明函数<br><code>#include&lt;stdio&gt;</code>下面加上<code>int main()</code>或者其他</p>
+<p>###2.忽略变量类型，进行不合法运算</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">	float a,b;</span><br><span class="line">	printf(&quot;%d&quot;,a%b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>%是求余运算，得到a/b的整余数。整型变量可进行求余运算，而实型变量则不允许进行求余运算。<br>###3.忘记加分号</p>
+<p>%是求余运算，得到a/b的整余数。整型变量可进行求余运算，而实型变量则不允许进行求余运算。</p>
+<p>###3.忘记加分号</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c=1</span><br><span class="line">b=2</span><br></pre></td></tr></table></figure>
 
-<p>几乎在所有编程语言中，都是用“;”代表一句或多句语句的结束。<br>###4.忘加地址运算符“&amp;”</p>
+<p>几乎在所有编程语言中，都是用“;”代表一句或多句语句的结束。</p>
+<p>###4.忘加地址运算符“&amp;”</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a;</span><br><span class="line">scanf(&quot;%d&quot;,a);</span><br></pre></td></tr></table></figure>
 
-<p>scanf函数的作用是：按照a在内存中的地址将a的值存进去。“&amp;a”是指a在内存中的地址。<br>###5.输入数据的方式与要求不符<br><code>scanf(&quot;%a%b&quot;,&amp;a,&amp;b);</code><br>输入时不能用“，”将a,b隔开如：<code>3,4</code>；应该用空格.<br><code>scanf(&quot;%a,%b&quot;,&amp;a,&amp;b);</code><br>此时应输入<code>a,b</code>才是正确的<br><code>scanf(&quot;a=%d,b=%d&quot;,&amp;a,&amp;b);</code><br>此时应输入<code>a=3,b=4</code><br>###6.输入、输出的数据类型与所用格式说明符不一致</p>
+<p>scanf函数的作用是：按照a在内存中的地址将a的值存进去。“&amp;a”是指a在内存中的地址。</p>
+<p>###5.输入数据的方式与要求不符<br><code>scanf(&quot;%a%b&quot;,&amp;a,&amp;b);</code><br>输入时不能用“，”将a,b隔开如：<code>3,4</code>；应该用空格.<br><code>scanf(&quot;%a,%b&quot;,&amp;a,&amp;b);</code><br>此时应输入<code>a,b</code>才是正确的<br><code>scanf(&quot;a=%d,b=%d&quot;,&amp;a,&amp;b);</code><br>此时应输入<code>a=3,b=4</code></p>
+<p>###6.输入、输出的数据类型与所用格式说明符不一致</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int a=1;</span><br><span class="line">float b=1.2;</span><br><span class="line">printf(&quot;%f%d&quot;,a,b);</span><br></pre></td></tr></table></figure>
 
-<p>这种错误要引起重视，编译器不会出现错误，但运行结果错误。<br>###7.忽略自增（自减）运算符的细节<br>第一个区别， i++ 返回原来的值，++i 返回加1后的值</p>
+<p>这种错误要引起重视，编译器不会出现错误，但运行结果错误。</p>
+<p>###7.忽略自增（自减）运算符的细节<br>第一个区别， i++ 返回原来的值，++i 返回加1后的值</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">	int a=0,b=0,i;</span><br><span class="line">	scanf(&quot;%d&quot;,&amp;i);</span><br><span class="line">	a=++i;</span><br><span class="line">	--i;//保证i值没变化</span><br><span class="line">	b=i++;</span><br><span class="line">	print(&quot;a=%d,b=%d&quot;,a,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>输出结果： <code>a=i+1 b=i</code>。因为<code>=++i;</code>是先把i加1再赋值给a，可以把此句分解为：<code>i=i+1;a=i;；b=i++;</code>是先把i赋值给b再加1，可分解为：<code>b=i;i=i+1;</code>。</p>
