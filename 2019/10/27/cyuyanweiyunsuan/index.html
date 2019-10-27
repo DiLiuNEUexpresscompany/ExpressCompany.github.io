@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-10-27</span>
-            <span class="time">23:49:17</span>
+            <span class="time">00:03:40</span>
           </span>
           
         </div>
@@ -120,43 +120,9 @@
 <p>整数类型的位模式由一队按位置从右到左编号的位组成，位置编号从 0 开始，这是最低有效位（least significant bit）。例如，考虑字符值’*’，它的 <a href="https://baike.baidu.com/item/ASCII/309296?fr=aladdin" target="_blank" rel="noopener">ASCII</a> 编码为 42，相当于二进制的 101010：<br>位模式　0　0　1　0　1　0　1　0<br>位位置　7　6　5　4　3　2　1　0<br>在本例中，值 101010 被表示成一个 8 位的字节内容，因此前面多两个 0。</p>
 <p>一.布尔位运算符<br>表 1 中列举的运算符可以对操作数的每个位进行布尔运算。这种二元运算符把两个不同操作数内相同位置的位关联起来。被设定的位（也就是值为 1 的位）被解释为 true，被清除的位（也就是值为 0 的位）被解释为 false。<br>除布尔运算符 AND、OR 和 NOT 以外，也有位异或运算符（exclusive-OR，XOR）。这些都在表 1 进行了列举。</p>
 <p>表1 布尔位运算符</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>意义</th>
-<th>示例</th>
-<th>对于每个位位置的结果（1=设定，0=清除）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&amp;</td>
-<td>位 AND</td>
-<td>x&amp;y</td>
-<td>如果 x 和 y 都为 1，则得到 1；如果 x 或 y 任何一个为 0，或都为0，则得到 0</td>
-</tr>
-<tr>
-<td>l</td>
-<td>位 OR</td>
-<td>x l y</td>
-<td>如果 x 或 y 为 1，或都为 1，则得到 1；如果 x 和 y 都为 0，则得到 0</td>
-</tr>
-<tr>
-<td>^</td>
-<td>位 XOR</td>
-<td>x^y</td>
-<td>如果 x 或 y 的值不同，则得到 1；如果两个值相同，则得到 0</td>
-</tr>
-<tr>
-<td>~</td>
-<td>位 NOT（I的补码）</td>
-<td>~x</td>
-<td>如果 x 为 0，则得到 1，如果 x 是 1，则得到 0</td>
-</tr>
-</tbody></table>
-<p><font color="#FF0000">位运算符的操作数必须是整数类型，并且遵循寻常算术转换（usualarithmetic conversion）</font>。转换后获得的操作数通用类型就是整个计算结果的类型。表 2 展示了这些运算符的效果。</p>
+<p><img src="https://raw.githubusercontent.com/ExpressCompany/picture/master/b1.png" alt="github"><br><font color="#FF0000">位运算符的操作数必须是整数类型，并且遵循寻常算术转换（usualarithmetic conversion）</font>。转换后获得的操作数通用类型就是整个计算结果的类型。表 2 展示了这些运算符的效果。</p>
 <p>表2 位运算符的效果</p>
-<p>表达式（或声明）|    位模式<br>—|–|–<br>int a=6;|    0···00110<br>int b=11;|    0···01011<br>a&amp;b    |0···00010<br>a l b    |0···01111<br>a^b    |0···01101<br>~a    |1···11001</p>
+<p><img src="https://raw.githubusercontent.com/ExpressCompany/picture/master/b2.png" alt="github"></p>
 <p>可以将一个整数 a 的特定位清除，做法是将整数 a 和另一个整数进行位 AND 运算，其中，另一个整数在需要清除的位为 0，其他位则为 1，并位 AND 运算，其中，另一个整数在需要清除的位为 0，其他位则为 1，并将 AND 运算的结果赋值给整数 a。</p>
 <p>该另一个整数，即位 AND 运算的第二个操作数，被设定为 1 的位置（称为位掩码），这些位置经过位 AND 运算，不会改变第一个操作数对应位置的值。例如，一个整数与一个位掩码 0xFF 进行位 AND 运算后，将保留最低位置的 8 个位，而会清除其他所有位的值：<br><code>a &amp;= OxFF;            // 相当于：a = a &amp; OxFF;</code></p>
 <p>在该示例中，复合赋值运算符 &amp;= 也会执行 &amp; 运算。复合赋值运算符与其他二元位运算符具有类似的执行方式，这里不再赘述。</p>
@@ -170,28 +136,7 @@
 <p>本例中的前两个表达式等同于 b=b^（a^b）或 b=（a^b）^b。其结果等同于 b=a，副作用是 a 的值也被修改了，其修改后的值为 a^b。在这时，第三个表达式具有如下副作用 a=（a^b）^a 或 a=b（使用 a 和 b 的原始值）。</p>
 <p>二.移位运算符<br>移位运算符将左操作数的位模式移动数个位置，至于移动几个位置，由右操作数指定。它们如表 3 列举。</p>
 <p>表3 移位运算符</p>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>意义</th>
-<th>示例</th>
-<th align="left">结果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>&lt;&lt;</td>
-<td>向左移位</td>
-<td>x&lt;&lt;y</td>
-<td align="left">x 的每个位向左移动 y 个位</td>
-</tr>
-<tr>
-<td>&gt;&gt;</td>
-<td>向右移位</td>
-<td>x&gt;&gt;y</td>
-<td align="left">x 的每个位向右移动 y 个位</td>
-</tr>
-</tbody></table>
+<p><img src="https://raw.githubusercontent.com/ExpressCompany/picture/master/b3.png" alt="github"></p>
 <p><font color="#FF0000">移位运算符的操作数必须是整数。</font>在实际移位操作之前，两个操作数都要进行整数提升（promotion）。右边操作数不可以为负值，并且必须少于左边操作数在整数提升之后的位长。如果不符合这些条件，程序运行结果将无法确定。</p>
 <p>移位运算结果的类型等于左操作数在整数提升后的类型。下面示例的移位表达式具有 unsigned long 类型。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">unsigned long n = 0xB,      // 位模式： 0 ... 0 0 0 1 0 1 1</span><br><span class="line">         result = 0;</span><br><span class="line">result = n &lt;&lt; 2;           //              0 ... 0 1 0 1 1 0 0</span><br><span class="line">result = n &gt;&gt; 2;          //              0 ... 0 0 0 0 0 1 0</span><br></pre></td></tr></table></figure>
