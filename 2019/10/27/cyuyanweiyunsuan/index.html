@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content>
+  <meta name="author" content="Express Company">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="C语言位运算">
+  <meta property="og:description" content="整点新鲜的">
+  <meta property="og:site_name" content="一把老剑条的Blog">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://expresscompany.github.io">
+  
+    <link rel="alternate" href="/atom.xml" title="一把老剑条的Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>一把老剑条的Blog</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/default-banner-dark.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">C语言位运算</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  Archives
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/ExpressCompany">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:1721318030@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By Express Company</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2019-10-27</span>
+            <span class="time">23:30:44</span>
+          </span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/C语言/">#C语言</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>对于更多紧凑的数据，C 程序可以用独立的位或多个组合在一起的位来存储信息。文件访问许可就是一个常见的应用案例。位运算符允许对一个字节或更大的数据单位中独立的位做处理：可以清除、设定，或者倒置任何位或多个位。也可以将一个整数的位模式（bit pattern）向右或向左移动。</p>
+<p>整数类型的位模式由一队按位置从右到左编号的位组成，位置编号从 0 开始，这是最低有效位（least significant bit）。例如，考虑字符值’*’，它的 <a href="https://baike.baidu.com/item/ASCII/309296?fr=aladdin" target="_blank" rel="noopener">ASCII</a> 编码为 42，相当于二进制的 101010：<br>位模式　0　0　1　0　1　0　1　0<br>位位置　7　6　5　4　3　2　1　0<br>在本例中，值 101010 被表示成一个 8 位的字节内容，因此前面多两个 0。</p>
+<p>一.布尔位运算符<br>表 1 中列举的运算符可以对操作数的每个位进行布尔运算。这种二元运算符把两个不同操作数内相同位置的位关联起来。被设定的位（也就是值为 1 的位）被解释为 true，被清除的位（也就是值为 0 的位）被解释为 false。<br>除布尔运算符 AND、OR 和 NOT 以外，也有位异或运算符（exclusive-OR，XOR）。这些都在表 1 进行了列举。</p>
+<p>表1 布尔位运算符<br>运算符|    意义|    示例|    对于每个位位置的结果（1=设定，0=清除）<br>—|:–:|:–:|:—<br>    &amp;    |     位 AND    | x&amp;y |    如果 x 和 y 都为 1，则得到 1；如果 x 或 y 任何一个为 0，或都为0，则得到 0<br>     l   |    位 OR     | x l y |如果 x 或 y 为 1，或都为 1，则得到 1；如果 x 和 y 都为 0，则得到 0<br>    ^    |    位 XOR    | x^y  |如果 x 或 y 的值不同，则得到 1；如果两个值相同，则得到 0<br>    ~    |    位 NOT（I的补码）    | ~x |    如果 x 为 0，则得到 1，如果 x 是 1，则得到 0<br><font color="#FF0000">位运算符的操作数必须是整数类型，并且遵循寻常算术转换（usualarithmetic conversion）</font>。转换后获得的操作数通用类型就是整个计算结果的类型。表 2 展示了这些运算符的效果。</p>
+<p>表2 位运算符的效果<br>表达式（或声明）|    位模式<br>—|:–:|:–<br>int a=6;|    0···00110<br>int b=11;|    0···01011<br>a&amp;b    |0···00010<br>a l b    |0···01111<br>a^b    |0···01101<br>~a    |1···11001</p>
+<p>可以将一个整数 a 的特定位清除，做法是将整数 a 和另一个整数进行位 AND 运算，其中，另一个整数在需要清除的位为 0，其他位则为 1，并位 AND 运算，其中，另一个整数在需要清除的位为 0，其他位则为 1，并将 AND 运算的结果赋值给整数 a。</p>
+<p>该另一个整数，即位 AND 运算的第二个操作数，被设定为 1 的位置（称为位掩码），这些位置经过位 AND 运算，不会改变第一个操作数对应位置的值。例如，一个整数与一个位掩码 0xFF 进行位 AND 运算后，将保留最低位置的 8 个位，而会清除其他所有位的值：<br><code>a &amp;= OxFF;            // 相当于：a = a &amp; OxFF;</code></p>
+<p>在该示例中，复合赋值运算符 &amp;= 也会执行 &amp; 运算。复合赋值运算符与其他二元位运算符具有类似的执行方式，这里不再赘述。</p>
+<p>位运算符也可以用来生成位掩码，以供以后的位运算使用。例如，在位模式 0x20 中，只有位5被设定。因此表达式 ~0x20 会生成一个只有位 5 没有被设定的位掩码：<br><code>a &amp;= ~0x20;             // 清除a中的位5</code><br>位掩码 ~0x20 比 0xFFFFFFDF 更受欢迎，因为它的可移植性更好：结果不会受到机器字大小的影响（同时也更方便人阅读）。</p>
+<p>也可以使用运算符 |（OR）和 ^（XOR）来设定或清除特定位，下面是一个示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int mask = OxC;</span><br><span class="line">a |= mask;              // 设定a的位2和位3</span><br><span class="line">a ^= mask;              // 求反a的位2和位3</span><br></pre></td></tr></table></figure>
+
+<p>第二个转换使用相同的位掩码，它会将第一次转换的结果再反转一次。换句话说，b^mask^mask 会得到原来 b 的值。这个操作可以用于交换两个整数的值，而不需要使用第三个临时变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a ^= b;                  // 等效于 a = a ^ b;</span><br><span class="line">b ^= a;                 // 将a原来的值赋值给b</span><br><span class="line">a ^= b;                 // 将b原来的值赋值给a</span><br></pre></td></tr></table></figure>
+
+<p>本例中的前两个表达式等同于 b=b^（a^b）或 b=（a^b）^b。其结果等同于 b=a，副作用是 a 的值也被修改了，其修改后的值为 a^b。在这时，第三个表达式具有如下副作用 a=（a^b）^a 或 a=b（使用 a 和 b 的原始值）。</p>
+<p>二.移位运算符<br>移位运算符将左操作数的位模式移动数个位置，至于移动几个位置，由右操作数指定。它们如表 3 列举。</p>
+<p>表3 移位运算符<br>运算符|    意义|    示例|    结果<br>—|:–:|:–:|:–<br>&lt;&lt;|    向左移位|    x&lt;&lt;y|    x 的每个位向左移动 y 个位</p>
+<blockquote>
+<blockquote>
+<p>   |向右移位|    x&gt;&gt;y|    x 的每个位向右移动 y 个位</p>
+</blockquote>
+</blockquote>
+<p><font color="#FF0000">移位运算符的操作数必须是整数。</font>在实际移位操作之前，两个操作数都要进行整数提升（promotion）。右边操作数不可以为负值，并且必须少于左边操作数在整数提升之后的位长。如果不符合这些条件，程序运行结果将无法确定。</p>
+<p>移位运算结果的类型等于左操作数在整数提升后的类型。下面示例的移位表达式具有 unsigned long 类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">unsigned long n = 0xB,      // 位模式： 0 ... 0 0 0 1 0 1 1</span><br><span class="line">         result = 0;</span><br><span class="line">result = n &lt;&lt; 2;           //              0 ... 0 1 0 1 1 0 0</span><br><span class="line">result = n &gt;&gt; 2;          //              0 ... 0 0 0 0 0 1 0</span><br></pre></td></tr></table></figure>
+
+<p>在向左移位运算时，右边多出来的位用 0 来填充。移动超出左边边界的位则直接抛弃。向左移动 y 个位置，就等同于将左操作数乘以 2^{y}：如果左操作数 x 是无符号类型，那么表达式 x&lt;&lt;y 的结果等于表达式 x×2^{y} 的值。因此，在前面的例子，n&lt;&lt;2 的值为 n×4，也就是 44。</p>
+<p>在向右位移运算时，如果左操作数是无符号类型，或者左操作数是带符号类型但为非负值，则左边多出来的位用 0 来填充。在这种情况下，表达式 x&gt;&gt;y 的结果等效于表达式 x/2^{y} 的值。如果左操作数是负值，那么由编译器决定用于填充至左边多出来的位的内容，可能是 0，也可能是符号位。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 函数setBit()</span><br><span class="line">// 设定掩码m中p位置的位。</span><br><span class="line">// 使用定义在limits.h中的CHAR_BIT，存储一个字节内的位的数目。</span><br><span class="line">// 返回值： 完成位设定的新掩码，其中p位置已设定好</span><br><span class="line">//              如果p不是有效的位置，则返回原始掩码。</span><br><span class="line">unsigned int setBit( unsigned int mask, unsigned int p )</span><br><span class="line">&#123;</span><br><span class="line">  if ( p &gt;= CHAR_BIT * sizeof(int) )</span><br><span class="line">    return mask;</span><br><span class="line">  else</span><br><span class="line">    return mask | (1&lt;&lt;p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><font color="#FF0000">移位运算符的优先级比算术运算符的优先级更低，但相对于比较运算符以及其他的位操作运算符，具有更高的优先级。</font>上例表达式 mask|（1&lt;&lt;p）中的括号必要性不大，主要是让程序代码更容易阅读。</p>
+<p>本文转自<a href="http://c.biancheng.net/view/288.html" target="_blank" rel="noopener">C语言位运算符</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
