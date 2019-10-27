@@ -100,7 +100,7 @@
           <!-- Date -->
           <span class="date-time info">On
             <span class="date">2019-10-27</span>
-            <span class="time">23:41:12</span>
+            <span class="time">23:49:17</span>
           </span>
           
         </div>
@@ -124,39 +124,39 @@
 <thead>
 <tr>
 <th>运算符</th>
-<th align="center">意义</th>
-<th align="center">示例</th>
-<th align="left">对于每个位位置的结果（1=设定，0=清除）</th>
+<th>意义</th>
+<th>示例</th>
+<th>对于每个位位置的结果（1=设定，0=清除）</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>&amp;</td>
-<td align="center">位 AND</td>
-<td align="center">x&amp;y</td>
-<td align="left">如果 x 和 y 都为 1，则得到 1；如果 x 或 y 任何一个为 0，或都为0，则得到 0</td>
+<td>位 AND</td>
+<td>x&amp;y</td>
+<td>如果 x 和 y 都为 1，则得到 1；如果 x 或 y 任何一个为 0，或都为0，则得到 0</td>
 </tr>
 <tr>
 <td>l</td>
-<td align="center">位 OR</td>
-<td align="center">x l y</td>
-<td align="left">如果 x 或 y 为 1，或都为 1，则得到 1；如果 x 和 y 都为 0，则得到 0</td>
+<td>位 OR</td>
+<td>x l y</td>
+<td>如果 x 或 y 为 1，或都为 1，则得到 1；如果 x 和 y 都为 0，则得到 0</td>
 </tr>
 <tr>
 <td>^</td>
-<td align="center">位 XOR</td>
-<td align="center">x^y</td>
-<td align="left">如果 x 或 y 的值不同，则得到 1；如果两个值相同，则得到 0</td>
+<td>位 XOR</td>
+<td>x^y</td>
+<td>如果 x 或 y 的值不同，则得到 1；如果两个值相同，则得到 0</td>
 </tr>
 <tr>
 <td>~</td>
-<td align="center">位 NOT（I的补码）</td>
-<td align="center">~x</td>
-<td align="left">如果 x 为 0，则得到 1，如果 x 是 1，则得到 0</td>
+<td>位 NOT（I的补码）</td>
+<td>~x</td>
+<td>如果 x 为 0，则得到 1，如果 x 是 1，则得到 0</td>
 </tr>
 </tbody></table>
 <p><font color="#FF0000">位运算符的操作数必须是整数类型，并且遵循寻常算术转换（usualarithmetic conversion）</font>。转换后获得的操作数通用类型就是整个计算结果的类型。表 2 展示了这些运算符的效果。</p>
 <p>表2 位运算符的效果</p>
-<p>表达式（或声明）|    位模式<br>—|:–:|:–<br>int a=6;|    0···00110<br>int b=11;|    0···01011<br>a&amp;b    |0···00010<br>a l b    |0···01111<br>a^b    |0···01101<br>~a    |1···11001</p>
+<p>表达式（或声明）|    位模式<br>—|–|–<br>int a=6;|    0···00110<br>int b=11;|    0···01011<br>a&amp;b    |0···00010<br>a l b    |0···01111<br>a^b    |0···01101<br>~a    |1···11001</p>
 <p>可以将一个整数 a 的特定位清除，做法是将整数 a 和另一个整数进行位 AND 运算，其中，另一个整数在需要清除的位为 0，其他位则为 1，并位 AND 运算，其中，另一个整数在需要清除的位为 0，其他位则为 1，并将 AND 运算的结果赋值给整数 a。</p>
 <p>该另一个整数，即位 AND 运算的第二个操作数，被设定为 1 的位置（称为位掩码），这些位置经过位 AND 运算，不会改变第一个操作数对应位置的值。例如，一个整数与一个位掩码 0xFF 进行位 AND 运算后，将保留最低位置的 8 个位，而会清除其他所有位的值：<br><code>a &amp;= OxFF;            // 相当于：a = a &amp; OxFF;</code></p>
 <p>在该示例中，复合赋值运算符 &amp;= 也会执行 &amp; 运算。复合赋值运算符与其他二元位运算符具有类似的执行方式，这里不再赘述。</p>
@@ -174,21 +174,21 @@
 <thead>
 <tr>
 <th>运算符</th>
-<th align="center">意义</th>
-<th align="center">示例</th>
+<th>意义</th>
+<th>示例</th>
 <th align="left">结果</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>&lt;&lt;</td>
-<td align="center">向左移位</td>
-<td align="center">x&lt;&lt;y</td>
+<td>向左移位</td>
+<td>x&lt;&lt;y</td>
 <td align="left">x 的每个位向左移动 y 个位</td>
 </tr>
 <tr>
 <td>&gt;&gt;</td>
-<td align="center">向右移位</td>
-<td align="center">x&gt;&gt;y</td>
+<td>向右移位</td>
+<td>x&gt;&gt;y</td>
 <td align="left">x 的每个位向右移动 y 个位</td>
 </tr>
 </tbody></table>
